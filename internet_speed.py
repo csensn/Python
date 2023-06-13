@@ -1,10 +1,11 @@
 import speedtest
 
-speed = speedtest.Speedtest()
+speed = speedtest.Speedtest(secure=True)
 download_speed = speed.download()
-kb = 1024*download_speed
+kb = 1024
 mb = 1024*kb
-print("Your Download speed is", mb)
+re = int(download_speed/mb)
+print("Your Download speed is in MB: ", re)
 
 upload_speed = speed.upload()
 print("Your Upload speed is", upload_speed)
