@@ -1,9 +1,14 @@
 import webbrowser
-from datetime import *
 
 import pyttsx3  #python text to speech extened version 3
 import speech_recognition as sr
 import wikipedia
+
+engine = pyttsx3.init('sapi5')
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
 
 def takecommand():
     r = sr.Recognizer()
@@ -17,27 +22,23 @@ def takecommand():
         # print(f"user said : {query}\n")
     return query
 
-# ser = input("What you want to listen: ")
-# url = "https://www.youtube.com/results?search_query="
-# url = url + ser
-# webbrowser.open(url)
 
 if __name__ == '__main__':
     while True:
         query = takecommand()
         query = query.lower()
         print(f"You said : {query}")
-        pyttsx3.speak(f"You said : {query}")
+        speak(f"You said : {query}")
         if'wikipedia' in query:
             print("Your search wikipedia...")
             query = query.replace("wikipedia","")
             result = wikipedia.summary(query, sentences=2)
-            pyttsx3.speak("According to wikipedia")
+            speak("According to wikipedia")
             print(result)
-            pyttsx3.speak(result)
+            speak(result)
         elif 'youtube' in query:
             print("Youtube is opening sir...")
-            pyttsx3.speak("You want to search somthing on youtube : Yes or No")
+            speak("You want to search somthing on youtube : Yes or No")
             pos = takecommand()
             pos = pos.lower()
             if "yes" or "search" in pos:
