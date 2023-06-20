@@ -1,6 +1,7 @@
+import os
 import subprocess
 import webbrowser
-
+from datetime import *
 import pyttsx3  #python text to speech extened version 3
 import speech_recognition as sr
 import wikipedia
@@ -52,7 +53,28 @@ if __name__ == '__main__':
                 
         elif 'instagram' in query:
             webbrowser.open("www.instagram.com")
-
-        elif 'chrome' in query:
-            print("Chrome opening......")
-            subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe')
+        elif 'play music' in query:
+            music_dir = 'D:\\Songs\\Shubh'
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir, songs[1]))
+        elif 'word' in query:
+            print("MS Word is opening......")
+            os.startfile(r"C:\Program Files\Microsoft Office\root\Office16\WINWORD.EXE")
+        elif 'exel' in query:
+            print("MS Exel is opening......")
+            speak("MS Exel is opening sir......")
+            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Excel.lnk")
+        elif 'open chrome' in query:
+            print("Google Chrome is opening......")
+            speak("Google Chrome is opening sir......")
+            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Google Chrome")
+        elif 'open edge' in query:
+            print("MS Edge is opening......")
+            speak("MS Edge is opening sir......")
+            os.startfile(r"C:\ProgramData\Microsoft\Windows\Start Menu\Programs\Microsoft Edge")
+        elif 'time' in query:
+            print(datetime.now().strftime("%H:%M:%S , Have a nice day sir..."))
+            speak(datetime.now().strftime("%H:%M:%S , Have a nice day sir..."))
+        elif 'exit' in query:
+            break
