@@ -1,3 +1,4 @@
+import subprocess
 import webbrowser
 
 import pyttsx3  #python text to speech extened version 3
@@ -48,5 +49,10 @@ if __name__ == '__main__':
                     webbrowser.open(url)
             else:
                 webbrowser.open("youtube.com")
-        elif "instagram" in query:
+                
+        elif 'instagram' in query:
             webbrowser.open("www.instagram.com")
+
+        elif 'chrome' in query:
+            print("Chrome opening......")
+            subprocess.Popen('C:\Program Files\Google\Chrome\Application\chrome.exe')
